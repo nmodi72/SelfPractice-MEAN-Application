@@ -1,0 +1,25 @@
+<html ng-app>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+</head>
+
+
+<body style="padding: 50px" ng-init = "recipes = [ 
+{name:'pasta al pesto', type: 'Italian', summary: 'A quick and simple dish for any italian household'},
+{name:'Pizza', type: 'Italian', summary: 'Fastest food ever'},
+{name:'noodles', type: 'chinese', summary: 'wavy fast food'}] ">
+	
+	<p> Filter List: <input ng-model="searchFor" size="30"></p>
+
+	<div style="width: 300px; float: left; margin-right: 20px" ng-repeat="recipe in filtered = (recipes | filter:searchFor | orderBy: 'type')" class="panel panel-default">
+		<div class="panel-heading">{{ recipe.name }} ({{ recipe.type }}) </div>
+		<div class="panel-body">{{ recipe.summary }} </div>
+	</div>
+	<div style="clear: left"></div>
+
+	<p> There are {{filtered.length}} recipes so far..!! </p>
+
+</body>
+</html>
